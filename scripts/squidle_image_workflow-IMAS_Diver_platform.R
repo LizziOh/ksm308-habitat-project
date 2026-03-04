@@ -1,4 +1,5 @@
-# based off Jac's script at https://github.com/jacquomo/squidle/blob/master/getting_bruv_images_ready_SQUIDLE%2B
+# Based off Jac's script at https://github.com/jacquomo/squidle/blob/master/getting_bruv_images_ready_SQUIDLE%2B
+# Currently needs to be run for every deployment folder of images 
 
 ### Load libraries
 library(tidyverse)
@@ -9,7 +10,7 @@ library(fs)
 library(geosphere)
 
 ## 1.0 Do some setup
-### Set the path to the folder containing the images
+### Set the path to the folder containing the images and metadata
 folder_path <- choose.dir() #navigate to folder
 setwd(folder_path)
 getwd()
@@ -24,8 +25,9 @@ full_res = "full_res"#dont change this
 thumbnails = "thumbnails" #dont change this
 
 
-
 ## 2.0 Read in metadata and sort out attribute names
+
+#Place csv of metadata from singular deployment in image folder (as per survey metadata template) 
 
 metadata <- read.csv(list.files(pattern="\\.csv$")[1]) |> 
   mutate(
